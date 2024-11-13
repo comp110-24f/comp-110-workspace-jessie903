@@ -48,16 +48,14 @@ print(to_str(courses))
 def last(head: Node) -> int:
     """Return the last value of a non-empty list."""
     # Base Case: When head is the "last" node
-    print(f"Enter last ({head.value})")
     if head.next is None:
         return head.value  # Return its value
     # RECURSIVE CASE
     else:
         rest: int = last(head.next)  # Figure out the last node (recursive call)
-        print(f"Return recur : {head.value} -> {rest}")
         return rest  # Return this value!
 
 
-print(last(two))
-print(last(one))  # expect to print 2
+# print(last(two))
+# print(last(one))  # expect to print 2
 print(last(courses))  # expect to print 301
