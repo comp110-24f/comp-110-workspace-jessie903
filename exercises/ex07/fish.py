@@ -2,10 +2,12 @@
 
 
 class Fish:
+    """Create a class Fish."""
+
     age: int
 
     def __init__(self):
-        """create attributes."""
+        """Create attributes."""
         self.age = 0
         return None
 

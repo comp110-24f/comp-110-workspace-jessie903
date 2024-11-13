@@ -2,6 +2,8 @@
 
 
 class Bear:
+    """Create a class Bear."""
+
     age: int
     hunger_score: int
 
@@ -18,6 +20,6 @@ class Bear:
         return None
 
     def eat(self, num_fish: int):
-        """updates Bear's hunger score to increase by num_fish"""
+        """Updates Bear's hunger score to increase by num_fish."""
         self.hunger_score += num_fish
         return None
