@@ -82,11 +82,9 @@ class River:
 
     def view_river(self):
         """Tells you what day, and the number of fish and bear in the River."""
-        fish_count = len(self.fish)
-        bears_count = len(self.bears)
         print(f" ~~Day {self.day}: ~~ ")
-        print(f"Fish Population: {fish_count} ")
-        print(f"Bear Population: {bears_count} ")
+        print(f"Fish Population: {self.fish} ")
+        print(f"Bear Population: {self.bears} ")
         return None
 
     def one_river_day(self):
