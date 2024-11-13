@@ -84,7 +84,7 @@ class River:
         """Tells you what day, and the number of fish and bear in the River."""
         fish_count = len(self.fish)
         bears_count = len(self.bears)
-        print(f" ~~Day~~ {self.day}:")
+        print(f" ~~Day {self.day}: ~~ ")
         print(f"Fish Population: {fish_count} ")
         print(f"Bear Population: {bears_count} ")
         return None
