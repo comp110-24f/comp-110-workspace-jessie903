@@ -110,3 +110,14 @@ def linkify(items: list[int]) -> Node | None:
 def scale(head: Node | None, factor: int) -> Node | None:
     if head is None:
         return None
+    # create head node
+    new_head = Node(value=head.value * factor, next=None)
+    current_old = head.next  # iterates through old list
+    current_new = new_head  # keeps track of last node in new scaled list
+    while current_old is not None:
+        # create new node with scaled value
+        new_node = Node(value=current_old.value * factor, next=None)
+        current_new.next = new_node  # link new node
+        current_new = new_node  # move to new node in new list
+        current_old = current_old.next  # move to next node in old list
+    return new_head
