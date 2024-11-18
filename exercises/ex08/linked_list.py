@@ -65,6 +65,24 @@ def last(head: Node) -> int:
 # print(last(courses))  # expect to print 301
 
 
+def recursive_range(start: int, end: int) -> Node | None:
+    """Build a list recursively from start to end"""
+    # Edge Case: raise ValueError("Invalid Arguments")
+    if start > end:
+        raise ValueError("Invalid Arguments, start > end,")
+    # Base case
+    if start == end:
+        return None
+    # Recursive Case
+    else:
+        # 1 Handle first value in new list
+        first: int = start
+        # 2 let the rest of the list be handled recursively
+        rest: Node | None = recursive_range(start + 1, end)
+        # 3 return a new node which is first followed by rest
+        return Node(first, rest)
+
+
 def value_at(head: Node | None, index: int) -> int:
     """Return the data of the Node stored at a given index"""
     # EDGE CASE (if None, raise index error)
@@ -94,30 +112,27 @@ def max(head: Node | None) -> int:
 
 
 def linkify(items: list[int]) -> Node | None:
-    if not items:
+    """Build a list recursively from input."""
+    # base case
+    if len(items) == 0:
         return None
-    # create head node
-    head = Node(value=items[0], next=None)
-    current = head
-    # iterate through rest of items and link nodes
-    for item in items[1:]:
-        new_node = Node(value=item, next=None)
-        current.next = new_node
-        current = new_node
-    return print(head)  # return the results, add print to not have a reference
+    else:
+        # create node for first elements of items
+        first: int = items[0]
+        # use linkify to recrursively go through rest of the list
+        rest: Node | None = linkify(items[1:])
+        # return new node with first value followed by rest
+        return Node(first, rest)
 
 
 def scale(head: Node | None, factor: int) -> Node | None:
+    "New linked list that has been scaled by factor."
+    # base case
     if head is None:
         return None
-    # create head node
-    new_head = Node(value=head.value * factor, next=None)
-    current_old = head.next  # iterates through old list
-    current_new = new_head  # keeps track of last node in new scaled list
-    while current_old is not None:
-        # create new node with scaled value
-        new_node = Node(value=current_old.value * factor, next=None)
-        current_new.next = new_node  # link new node
-        current_new = new_node  # move to new node in new list
-        current_old = current_old.next  # move to next node in old list
-    return new_head
+    else:
+        # start with first node
+        scaled_value: int = head.value * factor
+        # iteratie through rest of nodes
+        rest: Node | None = scale(head.next, factor)
+        return Node(scaled_value, rest)
